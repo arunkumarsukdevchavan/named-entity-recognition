@@ -96,21 +96,17 @@ X_train, X_test, y_train, y_test = train_test_split(X, y,
                                                     test_size=0.2, random_state=1)
 
 input_word = layers.Input(shape=(max_len,))
-
 embedding_layer = layers.Embedding(input_dim=num_words,output_dim=50,
                                    input_length=max_len)(input_word)
-
 dropout = layers.SpatialDropout1D(0.1)(embedding_layer)
-
 bid_lstm = layers.Bidirectional(
     layers.LSTM(units=100,return_sequences=True,
                 recurrent_dropout=0.1))(dropout)
-
 output = layers.TimeDistributed(
     layers.Dense(num_tags,activation="softmax"))(bid_lstm)
-
 model = Model(input_word, output)  
-
+print("Name:ARUN KUMAR SUKDEV CHAVAN")
+print("Reg.No:212222230013")
 model.summary()
 
 model.compile(optimizer="adam",
@@ -128,9 +124,13 @@ history = model.fit(
 metrics = pd.DataFrame(model.history.history)
 metrics.head()
 
+print("Name:ARUN KUMAR SUKDEV CHAVAN")
+print("Reg.No:212222230013")
 metrics[['accuracy','val_accuracy']].plot()
 metrics[['loss','val_loss']].plot()
 
+print("Name:ARUN KUMAR SUKDEV CHAVAN")
+print("Reg.No:212222230013")
 i = 25
 p = model.predict(np.array([X_test[i]]))
 p = np.argmax(p, axis=-1)
@@ -142,11 +142,13 @@ for w, true, pred in zip(X_test[i], y_true, p[0]):
 ```
 ## OUTPUT
 ### Training Loss, Validation Loss Vs Iteration Plot
-![image](https://github.com/user-attachments/assets/a49b46ea-c4cb-4ada-bb7b-3e7bbbf50eb1)
+![image](https://github.com/user-attachments/assets/5f9152d1-c902-4d20-8b03-d82478d3e27d)
+
 
 
 ### Sample Text Prediction
-![image](https://github.com/user-attachments/assets/25db697a-40bc-4651-91d2-30bf799399e0)
+![image](https://github.com/user-attachments/assets/8251ded5-0723-436e-bab3-ed8666d359ec)
+
 
 
 ## RESULT
